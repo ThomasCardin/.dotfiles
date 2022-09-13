@@ -19,11 +19,14 @@ set signcolumn=yes
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'dracula/vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
-colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * ++nested 
+
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 let mapleader = " "
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep for >") })<CR>
