@@ -1,0 +1,10 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "block"
+normal = "block"
+select = "block"
