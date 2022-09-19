@@ -1,3 +1,5 @@
+source $HOME/.config/nvim/plug-config/coc.vim
+
 syntax on
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -18,6 +20,7 @@ set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'morhetz/gruvbox'
 call plug#end()
