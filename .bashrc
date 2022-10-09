@@ -10,7 +10,12 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# Git branch
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+export PS1="\e[1;37m[\u@\h]\e[0m \e[1;34m\w\e[0m\e[1;33m\$(parse_git_branch)\e[0m $ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
@@ -32,5 +37,6 @@ if [ -d ~/.bashrc.d ]; then
 		fi
 	done
 fi
+
 
 unset rc
