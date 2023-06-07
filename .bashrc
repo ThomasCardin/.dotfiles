@@ -3,7 +3,7 @@
 # ALIAS
 alias "vpn=/opt/cisco/anyconnect/bin/vpnui"
 alias "discord=flatpak run com.discordapp.Discord"
-alias "lock=i3lock -c 000000"
+alias "lock=i3lock -c 000000 && xset dpms force off"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
