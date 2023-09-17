@@ -1,0 +1,113 @@
+{
+    "margin": "20 20 0 20",
+
+    "modules-left": ["hyprland/workspaces", "sway/language", "keyboard-state", "custom/pacman", "sway/mode"],
+    "modules-center": ["clock", "custom/weather"],
+    "modules-right": ["pulseaudio", "custom/mem", "backlight", "custom/ip", "temperature", "tray"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+    },
+
+    "sway/language": {
+        "format": "{} ",
+        "min-length": 5,
+        "tooltip": false
+    },
+
+    "keyboard-state": {
+        "capslock": true,
+        "format": "{name} {icon} ",
+        "format-icons": {
+            "locked": " ",
+            "unlocked": ""
+        }
+    },
+
+    "custom/pacman": {
+        "format": "{} ",
+        "interval": 3600,
+        "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "foot sh -c 'yay; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "tooltip": false
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %d %b, %I:%M %p}"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "return-type": "json"
+    },
+
+    "pulseaudio": {
+        "reverse-scrolling": 1,
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "婢 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["奄", "奔", "墳"]
+        },
+        "on-click": "pavucontrol",
+        "min-length": 13
+    },
+
+    "custom/mem": {
+        "format": "{} ",
+        "interval": 3,
+        "exec": "free -h | awk '/Mem:/{printf $3}'",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["","","","", "", "", ""],
+        "min-length": 7
+    },
+
+    "custom/ip": {
+        "format": " {}",
+        "interval": 600,
+        "exec": "ip addr show dev <YOUR_NETWORK_INTERFACE> | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 0
+    }
+}
