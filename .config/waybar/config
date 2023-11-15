@@ -1,113 +1,80 @@
 {
-    "margin": "20 20 0 20",
-
-    "modules-left": ["hyprland/workspaces", "sway/language", "keyboard-state", "custom/pacman", "sway/mode"],
-    "modules-center": ["clock", "custom/weather"],
-    "modules-right": ["pulseaudio", "custom/mem", "backlight", "custom/ip", "temperature", "tray"],
-
+	"layer": "top",
+	"modules-left": ["custom/k8sns","custom/k8sctx", "network"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["clock","pulseaudio", "battery","cpu","memory"],
+	
+	"pulseaudio": {
+		"tooltip": true,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "🔇 {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right":"pavucontrol",
+		"format-icons": {
+			"default": ["🔊", "🔊", "🔊"],
+			"headphones": "🎧"
+		}
+	},
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
-        }
+	"disable-scroll": true,
+	"persistent_workspaces": {
+		"*": 4,
+		"HDMI-A-1":2
+	}
     },
-
-    "sway/language": {
-        "format": "{} ",
-        "min-length": 5,
-        "tooltip": false
-    },
-
-    "keyboard-state": {
-        "capslock": true,
-        "format": "{name} {icon} ",
-        "format-icons": {
-            "locked": " ",
-            "unlocked": ""
-        }
-    },
-
-    "custom/pacman": {
-        "format": "{} ",
-        "interval": 3600,
-        "exec": "(checkupdates;pacman -Qm | aur vercmp) | wc -l",
-        "exec-if": "exit 0",
-        "on-click": "foot sh -c 'yay; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-        "signal": 8,
-        "tooltip": false
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a, %d %b, %I:%M %p}"
-    },
-
-    "custom/weather": {
-        "format": "{}",
-        "tooltip": true,
-        "interval": 1800,
-        "exec": "$HOME/.config/waybar/scripts/wttr.py",
-        "return-type": "json"
-    },
-
-    "pulseaudio": {
-        "reverse-scrolling": 1,
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "婢 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["奄", "奔", "墳"]
+	"network": {
+		"tooltip": false,
+		"format": "{ifname}",
+		"format-wifi": "🌐 {essid} {signalStrength}%",
+		"format-ethernet": "{ifname}  ",
+		"format-disconnected":""
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
         },
-        "on-click": "pavucontrol",
-        "min-length": 13
+        "format": "{icon} {capacity}%",
+        "format-charging": "🔌 {capacity}%",
+        "format-plugged": "🔌 {capacity}%",  
+        "format-alt": "{time} {icon}",
+        "format-icons": ["🔋", "🔌"]
     },
-
-    "custom/mem": {
-        "format": "{} ",
-        "interval": 3,
-        "exec": "free -h | awk '/Mem:/{printf $3}'",
-        "tooltip": false
+    "clock": {
+        "format": "{:🕛 %I:%M %p  📅 %d/%m/%Y}"
     },
-
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": false
+    "cpu": {
+        "interval": 15,
+        "format": "🖥️ {}%",
+        "max-length": 10
     },
-
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{percent}% {icon}",
-        "format-icons": ["","","","", "", "", ""],
-        "min-length": 7
+    "memory": {
+        "interval": 30,
+        "format": "📀 {}%",
+        "max-length": 10
     },
-
-    "custom/ip": {
-        "format": " {}",
-        "interval": 600,
-        "exec": "ip addr show dev <YOUR_NETWORK_INTERFACE> | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1",
-        "tooltip": false
+    "custom/k8sns": {
+        "exec": "$HOME/.config/waybar/scripts/k8s-cluster-info-ns.sh",
+        "format": "{}",
+        "interval": 10
     },
-
-    "tray": {
-        "icon-size": 16,
-        "spacing": 0
+    "custom/k8sctx": {
+        "exec": "$HOME/.config/waybar/scripts/k8s-cluster-info-ctx.sh",
+        "format": "{}",
+        "interval": 10
+    },
+    "custom/audio_idle_inhibitor": {
+	"format": "{icon}",
+	"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+	"exec-if": "which sway-audio-idle-inhibit",
+	"return-type": "json",
+	"format-icons": {
+		"output": "",
+		"input": "",
+		"output-input": "  ",
+		"none": ""
+        }
     }
 }
