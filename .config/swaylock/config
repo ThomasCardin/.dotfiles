@@ -16,9 +16,9 @@ indicator-radius=150
 indicator-thickness=30
 indicator-caps-lock
 
-key-hl-color=FF4500
+key-hl-color=979797
 
-separator-color=FF4500
+separator-color=979797
 
 inside-color=000000 # Red/Orange
 inside-clear-color=000000
@@ -32,10 +32,10 @@ ring-caps-lock-color=000000
 ring-ver-color=000000
 ring-wrong-color=FF0000
 
-line-color=FF4500
-line-clear-color=FF4500
-line-caps-lock-color=FF4500
-line-ver-color=FF4500
+line-color=979797
+line-clear-color=979797
+line-caps-lock-color=979797
+line-ver-color=979797
 line-wrong-color=FF0000
 
 text-color=008000
@@ -43,8 +43,8 @@ text-clear-color=008000
 text-ver-color=008000
 text-wrong-color=FF0000
 
-bs-hl-color=FF4500
-caps-lock-key-hl-color=FF4500
-caps-lock-bs-hl-color=FF4500
+bs-hl-color=979797
+caps-lock-key-hl-color=979797
+caps-lock-bs-hl-color=979797
 disable-caps-lock-text
-text-caps-lock-color=FF4500
+text-caps-lock-color=979797

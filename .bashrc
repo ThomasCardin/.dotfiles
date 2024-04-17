@@ -16,9 +16,9 @@ parse_git_branch() {
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-export PS1="\[\033[1;38;5;202m\][\u@\h]\[\033[0m\] \[\033[1;38;5;34m\]\w\[\033[0m\]\[\033[1;38;5;226m\]\$(parse_git_branch)\[\033[0m\] $ "
+export PS1="\[\033[1;37m\][\u@\h]\[\033[38;5;250m\] \w\[\033[1;38;5;33m\]\$(parse_git_branch)\[\033[0m\]\[\033[1m\] $ \[\033[0m\]"
 export CLICOLOR=1
-export LS_COLORS="di=01;91:"
+export LS_COLORS="di=01;34:ex=01;35:"  # Dossiers en bleu gras, fichiers exécutables en cyan gras
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -38,7 +38,6 @@ if [ -d ~/.bashrc.d ]; then
 		fi
 	done
 fi
-
 
 unset rc
 

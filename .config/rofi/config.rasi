@@ -42,7 +42,7 @@ inputbar {
 }
 
 prompt {
-    background-color: #FF4500;   
+    background-color: #979797;   
     padding: 6px;
     text-color: #000000;         
     border-radius: 3px;
@@ -82,7 +82,7 @@ element-icon {
 
 element selected {
     background-color: #000000;   
-    text-color: #FF4500;         
+    text-color: #979797;         
 }
 
 mode-switcher {
@@ -99,5 +99,5 @@ button {
 
 button selected {
     background-color: @bg-col;
-    text-color: #FF4500;   
+    text-color: #979797;   
 }

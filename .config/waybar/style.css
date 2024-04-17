@@ -31,13 +31,13 @@ window#waybar.hidden {
     font-size: 4px;
     margin-bottom: 0px;
     border-radius: 10px;
-    background: #161320; /* Noir */
+    background: #000000; /* Noir */
     transition: none;
 }
 
 #workspaces button {
 	transition: none;
-	color: #FF4500; /* Orange */
+	color: #FFFFFF; /* Main */
 	background: #000000; /* Noir */
 	font-size: 16px;
 	border-radius: 2px;
@@ -45,15 +45,15 @@ window#waybar.hidden {
 
 #workscpaces button.visible {
 	transition: none;
-	color: #F28FAD; /* Autre teinte d'orange */
+	color: #F28FAD; /* Main Autre teinte */
 	background: #000000; /* Noir */
 	font-size: 4px;
 }
 
 #workspaces button.active {
-	color: #ABE9B3;
-    border-top: 2px solid #ABE9B3;
-    border-bottom: 2px solid #ABE9B3;
+	color: #979797;
+    border-top: 2px solid #979797;
+    border-bottom: 2px solid #979797;
 }
 
 #custom-k8sns, #custom-k8sctx  {
@@ -64,7 +64,7 @@ window#waybar.hidden {
     margin-bottom: 0px;
     border-radius: 10px;
     transition: none;
-    color: #FF4500; /* Orange */
+    color: #FFFFFF; /* Main */
     background: #000000; /* Noir */
 }
 
@@ -76,6 +76,6 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #FF4500; /* Orange */
+	color: #FFFFFF; /* Main */
 	background: #000000; /* Noir */
 }

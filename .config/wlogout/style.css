@@ -15,7 +15,7 @@ button {
 }
 
 button:focus, button:active, button:hover {
-    background-color: #FF4500; /* Changé de #3700B3 à #FF4500 */
+    background-color: #979797; /* Changé de #3700B3 à #FF4500 */
     outline-style: none;
 }
 
