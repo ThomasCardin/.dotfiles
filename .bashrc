@@ -3,6 +3,8 @@
 # ALIAS
 alias "vpn=/opt/cisco/anyconnect/bin/vpnui"
 alias "lock=i3lock -c 000000 && xset dpms force off"
+alias ls='ls --color=auto'
+alias k='kubectl'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -15,10 +17,11 @@ parse_git_branch() {
 }
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-export PS1="\[\033[1;37m\][\u@\h]\[\033[38;5;250m\] \w\[\033[1;38;5;33m\]\$(parse_git_branch)\[\033[0m\]\[\033[1m\] $ \[\033[0m\]"
+export PS1="\[\033[1;97m\][\u@\h]\[\033[1;34m\] \w\[\033[1;38;5;229m\]\$(parse_git_branch)\[\033[0m\]\[\033[1m\] \$ \[\033[0m\]"
 export CLICOLOR=1
-export LS_COLORS="di=01;34:ex=01;35:"  # Dossiers en bleu gras, fichiers exécutables en cyan gras
+export LS_COLORS="di=01;34:ex=01;91:ln=01;208"
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -41,8 +44,3 @@ fi
 
 unset rc
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/tcardin/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/tcardin/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/tcardin/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/tcardin/Downloads/google-cloud-sdk/completion.bash.inc'; fi
